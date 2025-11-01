@@ -29,7 +29,7 @@ const tl = gsap.timeline({
 })
 
 export default function Home() {
-
+  
 const lenisRef = useRef<any>(null)
   
   useEffect(() => {
