@@ -89,8 +89,8 @@ export default function Home() {
             </div>
           </div>
         </main>
-        <section id="about-section" className="px-[clamp(20px,5vw,80px)] h-[150dvh]">
-            <div className="flex items-center justify-center w-full sticky top-0 h-dvh">
+        <section id="about-section" className="px-[clamp(20px,5vw,80px)] h-[150lvh]">
+            <div className="flex items-center justify-center w-full sticky top-0 h-lvh">
               <div className="flex flex-col justify-center items-center gap-2 md:max-w-1/2">
                 <div className="flex gap-1.5 items-center">
                   <div className="size-2 min-h-2 min-w-2 bg-blue rounded-full"></div>

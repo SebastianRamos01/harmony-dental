@@ -102,7 +102,7 @@ export default function ServicesSection() {
             </div>
             <div className='relative flex flex-col items-center'>
               {servicesList.map((el, i) => (
-                <div key={i} className='flex items-center h-[100dvh] lg:max-w-96 w-full sticky top-0'>
+                <div key={i} className='flex items-center h-[100lvh] lg:max-w-96 w-full sticky top-0'>
                   <div className='w-full h-[80%] rounded-xl overflow-hidden'
                     style={{ marginTop: i * 20}}>
                     <div className='relative w-full h-full'>

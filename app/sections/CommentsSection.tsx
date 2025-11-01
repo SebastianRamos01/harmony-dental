@@ -124,7 +124,7 @@ export default function CommentsSection() {
                 {commentsList.map((el, i) => (
                   <div key={i}
                       ref={node => { itemRefs.current[i] = node }}
-                    className="bg-[#fff] rounded-xl p-5 min-w-[80dvw] md:min-w-[65dvw] lg:min-w-[50dvw] snap-start"
+                    className="bg-[#fff] rounded-xl p-5 min-w-[80lvw] md:min-w-[65lvw] lg:min-w-[50lvw] snap-start"
                   >
                     <article className="flex flex-col justify-between gap-10 h-full">
                       <div className="flex gap-5">
