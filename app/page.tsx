@@ -15,7 +15,7 @@ import FaqSection from "./sections/FaqSection";
 import CommentsSection from "./sections/CommentsSection";
 import ServicesSection from "./sections/ServicesSection";
 import LocationsSection from "./sections/LocationsSection";
-import ReactLenis from "lenis/react";
+import ReactLenis, { LenisRef } from "lenis/react";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -30,11 +30,11 @@ const tl = gsap.timeline({
 
 export default function Home() {
   
-const lenisRef = useRef<any>(null)
+  const lenisRef = useRef<LenisRef | null>(null)
   
   useEffect(() => {
     function update(time: number) {
-      lenisRef.current.lenis?.raf(time * 1000)
+      lenisRef.current?.lenis?.raf(time * 1000)
     }
     gsap.ticker.add(update)
     return () => gsap.ticker.remove(update)
