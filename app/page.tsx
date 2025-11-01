@@ -30,7 +30,7 @@ const tl = gsap.timeline({
 
 export default function Home() {
 
-  const lenisRef = useRef(null as any);
+const lenisRef = useRef<any>(null)
   
   useEffect(() => {
     function update(time: number) {
