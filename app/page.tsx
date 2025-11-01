@@ -65,7 +65,7 @@ export default function Home() {
         <Loader></Loader>
         <Header isOpen={isNavOpen} toggleOpen={toggleNav}></Header>
         <NavMenu isOpen={isNavOpen} setIsOpen={setIsNavOpen}></NavMenu>
-        <main id="main-body" className="h-dvh w-full p-3 relative">
+        <main id="main-body" className="h-lvh w-full p-3 relative">
           <div id="main-hero" className="relative h-full w-full rounded-xl overflow-hidden">
             <div className="z-10 bg-linear-to-t from-[#1a1a1a]/40 to-[#fafafa]/0 h-1/2 w-full absolute bottom-0"></div>
             <Image
