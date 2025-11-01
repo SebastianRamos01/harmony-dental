@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: '#banner-section',
-    scrub: 1
+    scrub: true
   }
 })
 
@@ -53,13 +53,13 @@ export default function BodyBanner() {
 
   useGSAP(() => {
     tl.to('#banner-cont', {
-        y: '10%',
+        y: '-35%',
     })
   })
 
   return (
     <section id='banner-section' className="h-lvh w-full relative overflow-hidden bg-amber-100">
-          <div id='banner-cont' className="h-[140lvh] min-h-screen w-full absolute top-1/2 -translate-y-1/2 origin-center">
+          <div id='banner-cont' className="h-[140vh] w-full absolute top-1/2 -translate-y-1/2">
             {/* <div className='relative w-full h-full'>
                 <svg
                     ref={overlayRef}
