@@ -4,7 +4,7 @@ import { contactinfo, copyrightNotice, navsLinks, servicesList } from '../data/d
 
 export default function Footer() {
   return (
-    <footer className='bg-lightblue h-[140dvh] md:h-[110dvh] lg:h-[110dvh] mx-3 lg:mx-5 rounded-xl px-5 pt-5 flex flex-col'>
+    <footer className='bg-lightblue h-[140lvh] md:h-[110lvh] lg:h-[110lvh] mx-3 lg:mx-5 rounded-xl px-5 pt-5 flex flex-col'>
         <div className='relative h-2/5 lg:h-1/2 w-full overflow-hidden rounded'>
             <Image
                 src={'/images/outside-entry.png'}

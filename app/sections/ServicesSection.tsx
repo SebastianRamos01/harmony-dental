@@ -11,8 +11,8 @@ gsap.registerPlugin(ScrollTrigger)
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: '#services-section',
-    start: 'top top',
-    end: 'center center',
+    start: 'top center',
+    end: '+=500',
   }
 })
 

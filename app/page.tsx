@@ -22,7 +22,7 @@ gsap.registerPlugin(ScrollTrigger)
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: '#about-section',
-    start: 'top top',
+    start: 'top center',
     end: 'center center',
     scrub: 1
   }
