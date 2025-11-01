@@ -68,7 +68,7 @@ export default function LocationsSection() {
                   ></Image>
                 </div>
               </div>
-              <div className="w-fit flex flex-col absolute top-5 left-4">
+              {/* <div className="w-fit flex flex-col absolute top-5 left-4">
                 <div className="bg-blue w-8 h-8 min-h-8 min-w-8 rounded-full text-background flex items-center justify-center">
                   <p>
                     3
@@ -85,7 +85,7 @@ export default function LocationsSection() {
                 </div>
                 <div className="bg-blue w-3 h-3 min-h-3 min-w-3 rounded-full">
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="col-span-8 flex flex-col items-end gap-3 pt-20 md:col-start-11 lg:col-start-13 xl:col-start-20">
               <div className="flex items-end gap-1 w-fit">
