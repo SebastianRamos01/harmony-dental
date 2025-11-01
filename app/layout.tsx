@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
-import localFont from "next/font/local";
 
 const geistInter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
+import localFont from "next/font/local";
 const arialLocalFont = localFont({
-  src: '../public/fonts/arial.ttf',
+  src: '../public/fonts/arial/Arial.ttf',
   display: 'swap',
   variable: '--font-arial'
 })
