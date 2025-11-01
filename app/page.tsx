@@ -1,103 +1,117 @@
+'use client';
+
+import { useState, useEffect, useRef } from "react";
+import Header from "./components/Header";
+import NavMenu from "./components/NavMenu";
+import { headerTitle, aboutHeading, mainName } from "./data/data";
 import Image from "next/image";
+import Footer from "./components/Footer";
+import Loader from "./components/Loader";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import BodyBanner from "./components/BodyBanner";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FaqSection from "./sections/FaqSection";
+import CommentsSection from "./sections/CommentsSection";
+import ServicesSection from "./sections/ServicesSection";
+import LocationsSection from "./sections/LocationsSection";
+import ReactLenis from "lenis/react";
+
+gsap.registerPlugin(ScrollTrigger)
+
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#about-section',
+    start: 'top top',
+    end: 'center center',
+    scrub: 1
+  }
+})
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const lenisRef = useRef(null as any)
+  
+  useEffect(() => {
+    function update(time: any) {
+      lenisRef.current.lenis?.raf(time * 1000)
+    }
+    gsap.ticker.add(update)
+    return () => gsap.ticker.remove(update)
+  }, [])
+
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  }
+
+  useGSAP(() => {
+    tl.set('#about-word', {
+      opacity: 0,
+      y: 14,
+    })
+    tl.to('#about-word', {
+      opacity: 1,
+      y: 0,
+      ease: 'power2.out',
+      duration: 1.5,
+      stagger: 0.075
+    })
+  }, [])
+
+  return (
+      <>
+        <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+        <Loader></Loader>
+        <Header isOpen={isNavOpen} toggleOpen={toggleNav}></Header>
+        <NavMenu isOpen={isNavOpen} setIsOpen={setIsNavOpen}></NavMenu>
+        <main id="main-body" className="h-dvh w-full p-3 relative">
+          <div id="main-hero" className="relative h-full w-full rounded-xl overflow-hidden">
+            <div className="z-10 bg-linear-to-t from-[#1a1a1a]/40 to-[#fafafa]/0 h-1/2 w-full absolute bottom-0"></div>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+              src={'/images/odontology-recepcion.png'}
+              alt="hero-image"
+              fill
+              className="object-cover"
+            ></Image>
+          </div>
+          <div className="h-full w-full flex justify-center items-end absolute left-0 top-0 z-20">
+            <div className="text-background px-10 py-[clamp(40px,8vh,100px)] w-full md:w-1/2 max-w-[500px]">
+              <h1 className="flex flex-wrap justify-center">
+                {
+                  headerTitle.split(' ').map((el, i) => (
+                    <p key={i} className="text-4xl text-center pr-1.5">
+                      {el}
+                    </p>
+                  ))
+                }
+              </h1>
+            </div>
+          </div>
+        </main>
+        <section id="about-section" className="px-[clamp(20px,5vw,80px)] h-[150dvh]">
+            <div className="flex items-center justify-center w-full sticky top-0 h-dvh">
+              <div className="flex flex-col justify-center items-center gap-2 md:max-w-1/2">
+                <div className="flex gap-1.5 items-center">
+                  <div className="size-2 min-h-2 min-w-2 bg-blue rounded-full"></div>
+                  <h5 className="font-bold">{mainName}</h5>
+                </div>
+                <div className="flex flex-wrap justify-center">
+                  {aboutHeading.split(' ').map((el, i) => (
+                    <p id="about-word" key={i} className="text-3xl pr-1.5 opacity-0">
+                      {el}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+        </section>
+        <ServicesSection></ServicesSection>
+        <BodyBanner></BodyBanner>
+        <LocationsSection></LocationsSection>
+        <CommentsSection></CommentsSection>
+        <FaqSection></FaqSection>
+        <Footer></Footer>
+      </>
   );
 }
