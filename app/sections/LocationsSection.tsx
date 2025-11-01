@@ -49,12 +49,12 @@ export default function LocationsSection() {
             <div className="relative col-span-full">
               <div className="flex justify-center">
                 <div className="absolute top-0 right-0">
-                  <div className="relative w-fit h-auto">
+                  <div className="relative w-14 h-14">
                     <Image
                       src={'/province-map.svg'}
                       alt=""
-                      width={50}
-                      height={50}
+                      width={40}
+                      height={40}
                       className='w-auto'
                     ></Image>
                   </div>
