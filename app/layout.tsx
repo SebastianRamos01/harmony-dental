@@ -10,7 +10,7 @@ const geistInter = Inter({
 });
 
 const arialLocalFont = localFont({
-  src: '../public/fonts/arial/arialCE.ttf',
+  src: '../public/fonts/arial.ttf',
   display: 'swap',
   variable: '--font-arial'
 })

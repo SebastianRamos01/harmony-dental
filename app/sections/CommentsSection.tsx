@@ -10,8 +10,8 @@ gsap.registerPlugin(ScrollTrigger)
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: '#comments-section',
-    start: 'top center',
-    end: 'end center',
+    start: 'top top',
+    end: 'center center',
   }
 })
 
