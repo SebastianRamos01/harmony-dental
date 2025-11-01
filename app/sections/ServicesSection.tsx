@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
 import { servicesTitle, servicesHeading, servicesList } from '../data/data'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from 'gsap';
@@ -32,61 +31,58 @@ export default function ServicesSection() {
         })
       }, [])
 
-    // nuevo: estado y refs para controlar el carrusel por índice
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const carouselRef = useRef<HTMLUListElement | null>(null)
-    const itemRefs = useRef<Array<HTMLDivElement | null>>([])
+    // // nuevo: estado y refs para controlar el carrusel por índice
+    // const [currentIndex, setCurrentIndex] = useState(0)
+    // const carouselRef = useRef<HTMLUListElement | null>(null)
+    // const itemRefs = useRef<Array<HTMLDivElement | null>>([])
 
-    // desplazarse al índice (usado por botones)
-    const scrollToIndex = (i: number) => {
-      const clamped = Math.max(0, Math.min(i, servicesList.length - 1))
-      const el = itemRefs.current[clamped]
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })
-        setCurrentIndex(clamped)
-      }
-    }
+    // // desplazarse al índice (usado por botones)
+    // const scrollToIndex = (i: number) => {
+    //   const clamped = Math.max(0, Math.min(i, servicesList.length - 1))
+    //   const el = itemRefs.current[clamped]
+    //   if (el) {
+    //     el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })
+    //     setCurrentIndex(clamped)
+    //   }
+    // }
 
-    const onPrev = () => scrollToIndex(currentIndex - 1)
-    const onNext = () => scrollToIndex(currentIndex + 1)
+    // // actualizar índice en scroll manual (snap)
+    // useEffect(() => {
+    //   const cont = carouselRef.current
+    //   if (!cont) return
 
-    // actualizar índice en scroll manual (snap)
-    useEffect(() => {
-      const cont = carouselRef.current
-      if (!cont) return
+    //   let raf = 0
+    //   const onScroll = () => {
+    //     if (raf) cancelAnimationFrame(raf)
+    //     raf = requestAnimationFrame(() => {
+    //       const scrollCenter = cont.scrollLeft + cont.clientWidth / 2
+    //       let nearest = 0
+    //       let minDist = Infinity
+    //       itemRefs.current.forEach((it, i) => {
+    //         if (!it) return
+    //         const rect = it.getBoundingClientRect()
+    //         const parentRect = cont.getBoundingClientRect()
+    //         // center position relative to container scrollLeft
+    //         const itemCenter = (it.offsetLeft) + (rect.width / 2)
+    //         const dist = Math.abs(itemCenter - scrollCenter)
+    //         if (dist < minDist) {
+    //           minDist = dist
+    //           nearest = i
+    //         }
+    //       })
+    //       setCurrentIndex(nearest)
+    //     })
+    //   }
 
-      let raf = 0
-      const onScroll = () => {
-        if (raf) cancelAnimationFrame(raf)
-        raf = requestAnimationFrame(() => {
-          const scrollCenter = cont.scrollLeft + cont.clientWidth / 2
-          let nearest = 0
-          let minDist = Infinity
-          itemRefs.current.forEach((it, i) => {
-            if (!it) return
-            const rect = it.getBoundingClientRect()
-            const parentRect = cont.getBoundingClientRect()
-            // center position relative to container scrollLeft
-            const itemCenter = (it.offsetLeft) + (rect.width / 2)
-            const dist = Math.abs(itemCenter - scrollCenter)
-            if (dist < minDist) {
-              minDist = dist
-              nearest = i
-            }
-          })
-          setCurrentIndex(nearest)
-        })
-      }
+    //   cont.addEventListener('scroll', onScroll, { passive: true })
+    //   // inicializar
+    //   onScroll()
 
-      cont.addEventListener('scroll', onScroll, { passive: true })
-      // inicializar
-      onScroll()
-
-      return () => {
-        cont.removeEventListener('scroll', onScroll)
-        if (raf) cancelAnimationFrame(raf)
-      }
-    }, [])
+    //   return () => {
+    //     cont.removeEventListener('scroll', onScroll)
+    //     if (raf) cancelAnimationFrame(raf)
+    //   }
+    // }, [])
 
   return (
     <section id='services-section' className="py-[clamp(40px,8vh,100px)] px-[clamp(20px,5vw,80px)]">

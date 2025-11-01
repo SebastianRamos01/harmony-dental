@@ -2,7 +2,7 @@
 
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import React, { useRef, useEffect, Children } from 'react'
+import React, { useRef } from 'react'
 
 const tl = gsap.timeline()
 

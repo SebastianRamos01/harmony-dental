@@ -62,7 +62,7 @@ export default function CommentsSection() {
           itemRefs.current.forEach((it, i) => {
             if (!it) return
             const rect = it.getBoundingClientRect()
-            const parentRect = cont.getBoundingClientRect()
+            // const parentRect = cont.getBoundingClientRect()
             // center position relative to container scrollLeft
             const itemCenter = (it.offsetLeft) + (rect.width / 2)
             const dist = Math.abs(itemCenter - scrollCenter)

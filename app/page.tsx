@@ -30,10 +30,10 @@ const tl = gsap.timeline({
 
 export default function Home() {
 
-  const lenisRef = useRef(null as any)
+  const lenisRef = useRef(null as any);
   
   useEffect(() => {
-    function update(time: any) {
+    function update(time: number) {
       lenisRef.current.lenis?.raf(time * 1000)
     }
     gsap.ticker.add(update)

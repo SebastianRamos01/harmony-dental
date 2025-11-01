@@ -1,7 +1,7 @@
 'use client'
 
 import gsap from "gsap"
-import { useEffect, useRef } from "react"
+import { useEffect, useLayoutEffect, useRef } from "react"
 import Button from "./Button"
 import { navsLinks } from "../data/data"
 
@@ -65,7 +65,7 @@ export default function Header({ isOpen, toggleOpen } : {isOpen: boolean, toggle
 
         window.addEventListener('scroll', onScroll, { passive: true })
         return () => window.removeEventListener('scroll', onScroll)
-    }, [])
+    }, [ isOpen ])
 
     // controla la ventana de tiempo tras cerrar el nav para evitar que el header se esconda inmediatamente
     useEffect(() => {
@@ -119,17 +119,16 @@ export default function Header({ isOpen, toggleOpen } : {isOpen: boolean, toggle
 
     // aminacion de las lineas de los links al hacer hover
     // inicializar underlines y limpiar animaciones al desmontar
-    useEffect(() => {
-        // establecer ancho inicial a 0%
+    useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
         linkRefs.current.forEach(el => {
-            if (!el) return
-            gsap.set(el, { width: '0%' })
-        })
+            if (!el) return;
+            gsap.set(el, { width: '0%' });
+        });
+    });
 
-        return () => {
-            gsap.killTweensOf(linkRefs.current)
-        }
-    }, [])
+    return () => ctx.revert();
+}, []);
 
     // handlers para hover: crecen/reducen el ancho del div de underline
     const handleLinkEnter = (i: number) => {
