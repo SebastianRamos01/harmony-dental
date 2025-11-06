@@ -50,7 +50,7 @@ export default function Loader() {
 
   return (
     <>
-        <div ref={loaderContRef} className='h-dvh w-full fixed top-0 z-50'>
+        <div ref={loaderContRef} className='h-lvh w-full fixed top-0 z-50'>
             <svg
                     ref={overlayRef}
                     className="absolute inset-0 w-full h-full pointer-events-none"
@@ -68,9 +68,9 @@ export default function Loader() {
                       </mask>
                     </defs>
                     {/* rect blanco que usa la máscara => se ve blanco fuera del hueco */}
-                <rect width="100%" height="100%" fill="#0972CE" mask="url(#holeMask)" />
+                <rect width="100%" height="100%" fill="#fafafa" mask="url(#holeMask)" />
             </svg>
-            <div id='logos-container' className='flex items-center justify-center h-full w-full relative text-background'>
+            <div id='logos-container' className='flex items-center justify-center h-full w-full relative text-blue'>
                 <div id='back-logo' className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20'>
                     <div className="relative font-bold flex flex-col w-fit">
                         <div className="text-xl leading-3.5">Harmony</div>
